@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ملف الطالب - منصة جامع</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* إعدادات الصفحة */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            font-family: 'Tajawal', sans-serif;
+            overflow: hidden; 
+        }
+
+        /* الحاوية الرئيسية */
+        #main-container {
+            position: absolute;
+            top: 0;
+            width: 1080px;  
+            height: 1920px; 
+            /* ✅ تم التعديل لصيغة WebP */
+            background-image: url('pic02.webp');
+            background-size: 1080px 1920px;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            transform-origin: top left;
+
+            /* 🚀 كود التسريع لسفاري (Safari Optimization) */
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        .text-glow { text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        
+        /* تنسيق صورة الطالب */
+        #student-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            /* إعدادات التكبير والتركيز على الوجه */
+            transform: scale(1.9) translateY(3.6%);
+            transform-origin: center center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-container">
+        
+        <section id="header-section">
+            <div style="position: absolute; top: 135px; right: 80px; width: 550px; text-align: right; line-height: 1.3;">
+                
+                <div style="font-size: 32px; margin-bottom: 15px; display: flex; align-items: center;">
+                    <span id="hero-label-name" style="font-weight: 500; color: #ccc; margin-left: 10px;">اسم البطل:</span> 
+                    <span id="student-name" style="color: #ffffff; font-weight: 700;">جاري التحميل...</span>
+                </div>
+
+                <div style="font-size: 32px; margin-bottom: 15px; display: flex; align-items: center;">
+                    <span id="hero-label-code" style="font-weight: 500; color: #ccc; margin-left: 10px;">كود البطل :</span> 
+                    <span id="student-code" style="color: #d9411e; font-weight: 900;">...</span>
+                </div>
+
+                <div style="font-size: 28px; margin-bottom: 15px; display: flex; align-items: center; background: rgba(0, 0, 0, 0.4); padding: 5px 15px; border-radius: 15px; width: fit-content;">
+                    <span style="font-weight: 500; color: #ffd700; margin-left: 10px;">اللقب:</span> 
+                    <span id="student-title" style="color: #ffd700; font-weight: 800;">...</span>
+                </div>
+
+                <div style="font-size: 28px; margin-bottom: 8px; display: flex; align-items: center;">
+                    <span style="font-weight: 500; color: #ccc; margin-left: 10px;">التاريخ:</span> 
+                    <span id="current-date" style="color: #00cc6a; font-weight: 700;"></span>
+                </div>
+            </div>
+
+            <div style="position: absolute; top: 151px; left: 108px; width: 190px; height: 190px; border-radius: 50%; overflow: hidden; border: 4px solid #00cc6a; box-shadow: 0 0 25px rgba(0, 204, 106, 0.2); background-color: #1a2522; display: flex; align-items: center; justify-content: center;">
+                <img id="student-image" src="" alt="صورة الطالب">
+            </div>
+        </section>
+
+        <section id="progress-section" >
+            <div style="position: absolute; top: 440px; right: 50px; width: 980px; text-align: center; font-size: 35px; font-weight: 800; color: white; z-index: 5;">
+                نقاط شهر <span id="month-name" style="color: #d9411e;">...</span> لـ <span id="title-in-header" style="color: #d9411e;">...</span>
+            </div>
+
+            <div style="position: absolute; top: 510px; left: 50%; transform: translateX(-50%); width: 955px; height: 65px; border-radius: 35px; overflow: hidden; background-color: #02724e
+; border: 1px solid #02724e
+;">
+                <div id="progress-bar-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #d9411e 0%, #b3361b 100%); position: absolute; right: 0; border-radius: 35px; box-shadow: -2px 0 10px #02724e
+; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);"></div>
+                <div id="progress-text" class="text-glow" style="position: absolute; left: 35px; top: 55%; transform: translateY(-50%); font-size: 60px; font-weight: 900; color: white; z-index: 10;">
+                    0%
+                </div>
+            </div>
+
+            <div id="points-details" style="position: absolute; top: 590px; width: 100%; text-align: center; font-size: 28px; font-weight: 700; color: #00cc6a;">
+                ...
+            </div>
+        </section>
+
+        <section id="weekly-log-section">
+            <div style="position: absolute; z-index: 10; top: 693px; right: 60px; font-size: 40px; font-weight: 800; color: white;">
+                <i class="fas fa-clipboard-list" style="color:#aaa;"></i> سجل الأسبوع الحالي
+            </div>
+
+            <div style="position: absolute; z-index: 10; top: 770px; right: 80px; font-size: 28px; font-weight: 700; color: white;">
+                <i class="fas fa-calendar-week" style="color:#00aadd; margin-left: 10px;"></i> <span id="current-week-title">...</span>
+            </div>
+
+            <div style="position: absolute; z-index: 10; top: 843px; right: 80px; font-size: 130px; font-weight: 800; color: #00cc6a; line-height: 1;">
+                <span id="week-score-big" class="text-glow">0</span><span style="font-size: 60px;">/100</span>
+            </div>
+
+            <div id="tasks-container" style="position: absolute; z-index: 10; top: 953px; left: 90px; width: 900px; display: flex; flex-direction: column; gap: 0px;">
+                </div>
+        </section>
+
+        <section id="weeks-section">
+            <div id="weeks-container" style="position: absolute; z-index: 10; top: 1235px; left: 50%; transform: translateX(-50%); width: 955px; display: flex; flex-direction: column; gap: 20px;border:solid 1px #aaa;border-radius: 5px;">
+                </div>
+        </section>
+
+        <div id="error-message" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.9); padding:40px; border-radius:20px; color:white; text-align:center; font-size:30px; border:2px solid red; z-index:100;">
+            <i class="fas fa-exclamation-circle" style="font-size:50px; color:red; margin-bottom:20px;"></i><br>
+            <span id="error-text">جاري البحث عن البيانات...</span>
+        </div>
+
+    </div>
+
+    <script>
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRdmygNpjSr5rFYVcWrFKksDjsglFhp9QE78B6BRPU2SGAqPJxf2aVjSU-nXKUyabCPUwjl242YseB_/pub?gid=2082706209&single=true&output=csv';
+
+        const monthNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+        
+        const weeksTitles = [
+            "الانطلاقة",
+            "البناء المهاري",
+            "التعمق والتطبيق",
+            "حصاد الإنجاز"
+        ];
+
+        // ==========================================
+        // 🛠️ نظام التحجيم الهجين (معدل لسفاري)
+        // ==========================================
+        function fitToScreen() {
+            const container = document.getElementById('main-container');
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const dw = 1080;
+            const dh = 1920;
+
+            const isMobile = w < h;
+            let scale;
+
+            if (isMobile) {
+                scale = w / dw;
+                document.body.style.overflowY = 'auto'; 
+                container.style.transformOrigin = 'top left';
+                container.style.left = '0';
+                document.body.style.height = (dh * scale) + 'px';
+            } else {
+                scale = h / dh;
+                document.body.style.overflowY = 'hidden';
+                container.style.transformOrigin = 'top center';
+                container.style.left = (w - dw * scale) / 2 + 'px'; 
+                document.body.style.height = '100vh';
+            }
+            // 🚀 استخدام translate3d لتفعيل التسريع العتادي
+            container.style.transform = `translate3d(0,0,0) scale(${scale})`;
+        }
+
+        window.addEventListener('load', fitToScreen);
+        window.addEventListener('resize', fitToScreen);
+
+        // ==========================================
+        // المنطق الرئيسي
+        // ==========================================
+        async function initDashboard() {
+            fitToScreen(); 
+
+            const now = new Date();
+            const currentDay = now.getDate();
+            const currentMonthIndex = now.getMonth(); 
+            
+            document.getElementById('current-date').innerText = now.toLocaleDateString('ar-EG');
+            document.getElementById('month-name').innerText = monthNames[currentMonthIndex];
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const studentCode = urlParams.get('id');
+
+            if (!studentCode) {
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('error-text').innerText = "الرابط لا يحتوي على كود الطالب";
+                return;
+            }
+
+            try {
+                const noCacheURL = sheetURL + '&t=' + Date.now();
+                
+                const response = await fetch(noCacheURL);
+                if (!response.ok) throw new Error("فشل الاتصال بالشيت");
+                
+                const data = await response.text();
+                
+                const rows = data.split(/\r?\n/).map(row => {
+                    const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/; 
+                    return row.split(regex).map(cell => cell.replace(/^"|"$/g, '').trim());
+                });
+
+                let targetRow = null;
+                for (let i = 1; i < rows.length; i++) {
+                    if (rows[i][4] && rows[i][4] === studentCode.trim()) {
+                        targetRow = rows[i];
+                        break;
+                    }
+                }
+
+                if (!targetRow) {
+                    document.getElementById('error-message').style.display = 'block';
+                    document.getElementById('error-text').innerText = "الكود غير صحيح";
+                    return;
+                }
+
+                const sName = targetRow[3];
+                const sCode = targetRow[4];
+                const sTitle = targetRow[5] || "بطل جامع";
+                const w1 = parseInt(targetRow[6]) || 0;
+                const w2 = parseInt(targetRow[7]) || 0;
+                const w3 = parseInt(targetRow[8]) || 0;
+                const w4 = parseInt(targetRow[9]) || 0;
+                const totalPoints = w1 + w2 + w3 + w4;
+                const maxPoints = 400; 
+
+                const isFemale = sTitle.trim().endsWith("ة");
+                
+                document.getElementById('hero-label-name').innerText = isFemale ? "اسم البطلة:" : "اسم البطل:";
+                document.getElementById('hero-label-code').innerText = isFemale ? "كود البطلة :" : "كود البطل :";
+
+                const imgElem = document.getElementById('student-image');
+                
+                // ✅ هنا التعديل المهم لصور WebP
+                if (isFemale) {
+                    imgElem.src = "girl.webp";  // تأكد أن الاسم في الفولدر girl.webp
+                } else {
+                    imgElem.src = "boy.webp";   // تأكد أن الاسم في الفولدر Boy.webp
+                }
+
+                document.getElementById('student-name').innerText = sName;
+                document.getElementById('student-code').innerText = `[ ${sCode} ]`;
+                document.getElementById('student-title').innerText = sTitle;
+                document.getElementById('title-in-header').innerText = `"${sTitle}"`;
+
+                const percentage = Math.round((totalPoints / maxPoints) * 100);
+                document.getElementById('progress-bar-fill').style.width = percentage + "%";
+                document.getElementById('progress-text').innerText = percentage + "%";
+                document.getElementById('points-details').innerHTML = 
+                    `إجمالي نقاط الشهر: <span style="color: #d9411e; ">${totalPoints}</span> من ${maxPoints}`;
+
+                const weekScores = [w1, w2, w3, w4];
+                renderWeeksAndLog(currentDay, weekScores);
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('error-text').innerText = "خطأ في الشبكة، حاول مرة أخرى";
+            }
+        }
+
+        function renderWeeksAndLog(day, scores) {
+            let currentWeekNum = 0;
+            if (day <= 7) currentWeekNum = 1;
+            else if (day <= 14) currentWeekNum = 2;
+            else if (day <= 21) currentWeekNum = 3;
+            else currentWeekNum = 4;
+
+            const currentWeekScore = scores[currentWeekNum - 1] || 0;
+            updateWeeklyLog(currentWeekNum, currentWeekScore);
+
+            const container = document.getElementById('weeks-container');
+            let htmlContent = '';
+
+            weeksTitles.forEach((wName, index) => {
+                const weekId = index + 1;
+                const score = scores[index]; 
+                const weekDisplayName = `الأسبوع [${weekId}] أسبوع ${wName}`;
+
+                let barWidth = 0, barColor = '', opacity = '0.3', statusHTML = '';
+
+                if (weekId < currentWeekNum) {
+                    // أخضر مريح
+                    barWidth = score; barColor = '#00cc6a'; opacity = '1';
+                    statusHTML = `<div style="position: absolute; left: 30px; display: flex; align-items: center; gap: 10px; z-index: 5;"><span style="color: #00cc6a; font-size: 24px; font-weight: 800;">${score}/100</span><i class="fas fa-check-circle" style="color: #00cc6a; font-size: 24px;"></i></div>`;
+                }
+                else if (weekId === currentWeekNum) {
+                    // برتقالي مريح
+                    barWidth = score; barColor = '#d9411e'; opacity = '1';
+                    statusHTML = `<div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; z-index: 5;"><span style="color: #d9411e; font-size: 28px; font-weight: 800;">جاري الرصد</span><i class="fas fa-hourglass-half fa-spin" style="color: #d9411e; font-size: 22px;"></i></div><div style="position: absolute; left: 30px; font-weight: 800; color: white; font-size: 24px;">${score}/100</div>`;
+                }
+                else {
+                    barWidth = 0;
+                    statusHTML = `<div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; z-index: 5;"><span style="color: #666; font-size: 30px; font-weight: 800;">مغلق</span><i class="fas fa-lock" style="color: #888; font-size: 28px;"></i></div>`;
+                }
+                
+                // خلفية الشريط
+                htmlContent += `<div style="width: 100%; height: 65px; position: relative; display: flex; align-items: center; background-color: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); border-radius: 35px; overflow: hidden;"><div style="position: absolute; top: 0; right: 0; height: 100%; width: ${barWidth}%; background-color: ${barColor}; opacity: ${opacity}; transition: width 1s ease-in-out; border-radius: 35px;"></div><div style="position: absolute; right: 20px; display: flex; align-items: center; gap: 15px; z-index: 5;"><i class="fas fa-calendar-alt" style="color: #00aadd; font-size: 26px;"></i> <span style="color: white; font-size: 24px; font-weight: 700; text-shadow: 1px 1px 2px black;">${weekDisplayName}</span></div>${statusHTML}</div>`;
+            });
+            container.innerHTML = htmlContent;
+        }
+
+        function updateWeeklyLog(weekNum, score) {
+            const wName = weeksTitles[weekNum - 1] || "";
+            const weekTitleFull = `الأسبوع [${weekNum}] أسبوع ${wName}`;
+            
+            document.getElementById('current-week-title').innerText = weekTitleFull;
+            const bigScore = document.getElementById('week-score-big');
+            bigScore.innerText = score;
+            bigScore.style.color = "#d9411e"; // برتقالي مريح
+
+            const ratio = score / 100; 
+            const tasks = [
+                { name: "حضور الحصص في الموعد", max: 30, icon: "fa-clock", color: "#ffd700" },
+                { name: "مراجعة السابق والحفظ", max: 30, icon: "fa-book-open", color: "#ccc" },
+                { name: "التركيز والتفاعل", max: 30, icon: "fa-brain", color: "#00cc6a" },
+                { name: "حضور الأسبوع كاملاً", max: 10, icon: "fa-star", color: "#00aadd" }
+            ];
+
+            const tasksContainer = document.getElementById('tasks-container');
+            let tasksHTML = "";
+
+            tasks.forEach(task => {
+                const subScore = Math.round(task.max * ratio);
+                tasksHTML += `
+                <div class="task-row" style="display: flex; align-items: center; height: 50px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                    <div style="width: 60%; text-align: right; font-size: 24px; font-weight: 700; color: white; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas ${task.icon}" style="color: ${task.color}; font-size: 22px;"></i> ${task.name}
+                    </div>
+                    <div class="task-score" style="width: 25%; text-align: center; font-size: 24px; font-weight: 800; color: white;">${subScore} / ${task.max}</div>
+                    <div style="width: 15%; text-align: left;">
+                        <i class="fas fa-hourglass-half fa-spin" style="color: #d9411e; font-size: 28px;"></i>
+                    </div>
+                </div>`;
+            });
+            tasksContainer.innerHTML = tasksHTML;
+        }
+
+        window.onload = initDashboard;
+    </script>
+</body>
+</html>
